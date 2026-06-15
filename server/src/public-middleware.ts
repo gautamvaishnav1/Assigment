@@ -19,7 +19,14 @@ export function registerPublicMiddleware(app: express.Express) {
     const url = req.originalUrl || req.url;
 
     // Let API routes (and their 404s) be handled by routers.
-    if (url.startsWith('/api/')) return next();
+    if (url.startsWith('/api/')) 
+      
+      
+    {
+      console.log(`Skipping public middleware for API route: ${url}`);
+      res.status(404).json({ error: 'API route not found' });
+      return next();
+    }
 
     res.sendFile(indexHtml, (err) => {
       if (err) next(err);
