@@ -1,6 +1,6 @@
 
 import cors from 'cors'
-import  express  from "express";
+import express from "express";
 import helmet from 'helmet'
 // import rateLimit from 'express-rate-limit'
 import morgan from 'morgan'
@@ -8,10 +8,13 @@ import morgan from 'morgan'
 // import redis from './config/redis';
 import cookieParser from 'cookie-parser'
 // Router 
-import  authRouter from './modules/auth/auth.routes'
+import authRouter from './modules/auth/auth.routes'
 import productRouter from './features/product/product.routes'
 import publishProductRouter from './modules/publishProduct/publisProduct.routes'
-const app=express()
+import { registerPublicMiddleware } from './public-middleware'
+
+const app = express()
+
 const allowedOrigins = [
   'http://localhost:5173',
   process.env.CLIENT_URL,
@@ -41,5 +44,9 @@ app.use('/api/auth',authRouter)
 app.use('/api/product', productRouter)
 app.use('/api/publish',publishProductRouter )
 
+// Serve React production build (fixes MIME type issues for module scripts)
+registerPublicMiddleware(app)
 
 export default app
+
+
