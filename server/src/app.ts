@@ -4,7 +4,8 @@ import express from "express";
 import helmet from 'helmet'
 // import rateLimit from 'express-rate-limit'
 import morgan from 'morgan'
-
+import dotenv from 'dotenv'
+dotenv.config() 
 // import redis from './config/redis';
 import cookieParser from 'cookie-parser'
 // Router 
