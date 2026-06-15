@@ -9,22 +9,20 @@ if (!process.env.MONGO_URI) {
 if (!process.env.SECRET_KEY) {
   throw new Error('Secret key is not found ')
 }
-if(!process.env.REDIS_URL){
-  throw new Error('Redis url not found')
-}
+
 if(!process.env.APP_PASSWORD){
   throw new Error('App password not found')
 }
 if(!process.env.APP_EMAIL){
   throw new Error('Sender email not found')
 }
-if(!process.env.IMAGEKIT_PRIVATEKEY){
+if(!process.env.PRIVATE_KEY){
   throw new Error('Imagekit private key not found')
 }
-if(!process.env.IMAGEKIT_PUBLICKEY){
+if(!process.env.PUBLIC_KEY){
   throw new Error('Imagekit public key not found')
 }
-if(!process.env.IMAGEKIT_URLENDPOINT){
+if(!process.env.URL_ENDPOINT){
   throw new Error('Imagekit url endpoint not found')
 }
 // if(!process.env.REDIS_PORT){
@@ -33,8 +31,8 @@ if(!process.env.IMAGEKIT_URLENDPOINT){
 const config = {
   MONGO_URI: String(process.env.MONGO_URI),
   SECRET_KEY: String(process.env.SECRET_KEY),
-  PORT: Number(process.env.PORT),
-  REDIS_URL:String(process.env.REDIS_URL),
+  PORT: Number(process.env.PORT)||3000,
+  // REDIS_URL:String(process.env.REDIS_URL),
   APP_PASSWORD:String(process.env.APP_PASSWORD),
   APP_EMAIL:String(process.env.APP_EMAIL),
   IMAGEKIT_PRIVATEKEY:String(process.env.PRIVATE_KEY),

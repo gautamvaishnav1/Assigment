@@ -2,7 +2,7 @@
 import app from './app';
 import config from './config/config';
 import { connectToDB } from './config/db';
-import '../src/config/redis'
+// import redis from './config/redis'
 connectToDB()
 
 

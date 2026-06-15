@@ -5,14 +5,9 @@ import * as authMiddleware from './auth.middleware'
 const authRouter = express.Router()
 
 authRouter.post(
-  '/register',
+  '/otp-generate',
   authValidator.registerValidator,
-  authController.registerController
-)
-authRouter.post(
-  '/login',
-  authValidator.loginValidator,
-  authController.loginController
+  authController.otpGenerateController
 )
 authRouter.post(
   '/otp-verify',
@@ -34,14 +29,5 @@ authRouter.post(
   authMiddleware.authMiddlewareForAuthorization,
   authController.logoutController
 )
-authRouter.post(
-  '/logout-from-all-device',
-  authMiddleware.authMiddlewareForCookies,
-  authController.logOutAllController
-)
-authRouter.post(
-  '/forget-password',
-  authValidator.forgetPasswordValidator,
-  authController.forgetPasswordController
-)
+
 export default authRouter

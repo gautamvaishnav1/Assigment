@@ -2,7 +2,7 @@ import mongoose,{ Document, Schema } from "mongoose";
 
 export interface User extends Document{
     email:string,
-    password:string,
+    
     name  :string
 }
 
@@ -12,10 +12,7 @@ const userSchema=new Schema<User>({
         required:[true,'email is required for creating account'],
          unique:[true,'email must be unique ']
     },
-    password:{type:String,
-        required:true,
-
-    },
+  
     name:{
         type:String,
         required:true
