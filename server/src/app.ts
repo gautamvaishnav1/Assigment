@@ -15,7 +15,8 @@ dotenv.config();
 const app = express();
 
 const allowedOrigins = [
-  process.env.CLIENT_URL,
+  "https://assigment-sigma-eight.vercel.app",
+  "https://assigment-gp0ntzc12-gautam-vaishnavs-projects.vercel.app",
   "http://localhost:5173",
 ].filter(Boolean);
 
