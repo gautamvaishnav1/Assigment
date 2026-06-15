@@ -1,4 +1,5 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
 
 interface SidebarProps {
   isOpen: boolean;
@@ -6,7 +7,7 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
-  const location = useLocation();
+
 
   const navItems = [
     {

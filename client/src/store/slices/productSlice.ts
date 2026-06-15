@@ -106,7 +106,8 @@ export const publishProduct = createAsyncThunk(
   'products/publish',
   async (id: string, { rejectWithValue }) => {
     try {
-      const response: any = await productApi.publishProduct(id);
+      await productApi.publishProduct(id);
+
       // Wait, api returns { success: true, message: ... } for these new routes. 
       // The controller showed: res.status(200).json({ success: true, message: 'Product published successfully' });
       // It doesn't return the product! We need to return the ID so we can update the state manually.
