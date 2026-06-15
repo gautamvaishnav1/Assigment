@@ -12,7 +12,10 @@ export function registerPublicMiddleware(app: express.Express) {
   app.use(express.static(distDir, { index: false }));
 
   // For any non-API route, return the SPA entry.
-  app.get('*', (req, res, next) => {
+  // Express 5 + path-to-regexp is strict about route patterns.
+  // Avoid registering a wildcard route altogether (can crash at startup).
+  // Instead, implement fallback as middleware for non-API requests.
+  app.use((req, res, next) => {
     const url = req.originalUrl || req.url;
 
     // Let API routes (and their 404s) be handled by routers.
@@ -22,5 +25,7 @@ export function registerPublicMiddleware(app: express.Express) {
       if (err) next(err);
     });
   });
+
+
 }
 
